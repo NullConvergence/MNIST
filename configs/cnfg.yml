@@ -1,0 +1,40 @@
+seed: 0
+
+gpu: 'cuda:1'
+
+model:
+  custom: true
+  arch: 'LeNet'
+  tvision:
+    name: ''
+    args: {}
+
+data:
+  dir: './mnist-data'
+  batch_size: 128
+
+
+train:
+  epochs: 30
+  lr: 0.1
+  lr_scheduler: 'multistep'
+  step: 100
+  milestones: [15, 25]
+  gamma: 0.1
+  lr_min: 0.
+  lr_max: 0.2
+  weight_decay: 0.00005
+  momentum: 0.9
+
+opt:
+  level: 'O2'
+  loss_scale: 1.0
+  store: true
+
+logger:
+  wandb: true
+  project: 'MNIST'
+  run: 'LENET'
+
+save:
+  epochs: 5
